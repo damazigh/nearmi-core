@@ -1,0 +1,16 @@
+entries:
+  - key: 'NMI_G_0000'
+    message: 'Internal server error'
+    description: 'For more information checkout log file - id : %1s'
+    status: 500
+  - key: 'NMI_G_0001'
+    message: 'Invalid value detected'
+    description: 'The field %1s must be not null'
+    status: 400
+  - key: 'NMI_G_0002'
+    message: 'Invalid value detected'
+    description: 'The field %1s value was empty'
+  - key: 'G_0003'
+    message: 'Value already exists'
+    description: "Value of field '%1s' already exists"
+    status: 400
