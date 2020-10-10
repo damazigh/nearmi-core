@@ -1,4 +1,4 @@
-package org.nearmi.parent.core.exception;
+package org.nearmi.core.exception;
 
 import lombok.AccessLevel;
 import lombok.Data;

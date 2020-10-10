@@ -1,4 +1,4 @@
-package org.nearmi.parent.core.exception;
+package org.nearmi.core.exception;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

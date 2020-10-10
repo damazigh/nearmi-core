@@ -5,23 +5,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.4.RELEASE</version>
+        <groupId>org.nearmi</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0</version>
     </parent>
 
     <groupId>org.nearmi</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>core</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
 
     <properties>
-        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
-        <lombok.version>1.18.12</lombok.version>
         <snakeyaml.version>1.26</snakeyaml.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-        <java.version>11</java.version>
+        <java.version>14</java.version>
         <commons-lang3.version>3.11</commons-lang3.version>
         <commons-io.version>2.6</commons-io.version>
     </properties>
@@ -72,21 +70,5 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>9</source>
-                    <target>9</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

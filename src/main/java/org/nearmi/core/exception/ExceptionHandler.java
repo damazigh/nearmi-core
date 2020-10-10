@@ -1,8 +1,8 @@
-package org.nearmi.parent.core.exception;
+package org.nearmi.core.exception;
 
 import lombok.extern.slf4j.Slf4j;
-import org.nearmi.parent.core.resource.DictionaryEntry;
-import org.nearmi.parent.core.resource.ResourceDictionary;
+import org.nearmi.core.resource.DictionaryEntry;
+import org.nearmi.core.resource.ResourceDictionary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;

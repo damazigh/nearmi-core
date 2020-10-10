@@ -1,4 +1,4 @@
-package org.nearmi.parent.core.resource;
+package org.nearmi.core.resource;
 
 import lombok.AccessLevel;
 import lombok.Data;

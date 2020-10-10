@@ -1,6 +1,6 @@
-package org.nearmi.parent.core.exception;
+package org.nearmi.core.exception;
 
-import org.nearmi.parent.core.resource.ResourceDictionary;
+import org.nearmi.core.resource.ResourceDictionary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

@@ -1,9 +1,9 @@
-package org.nearmi.parent.core.exception;
+package org.nearmi.core.exception;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
-import org.nearmi.parent.core.resource.ResourceDictionary;
+import org.nearmi.core.resource.ResourceDictionary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.yaml.snakeyaml.Yaml;
@@ -16,7 +16,7 @@ import java.util.List;
 
 
 /**
- * Resource loader that scan configured (yaml) file and parse each configured error to an {@link org.nearmi.parent.core.resource.DictionaryEntry}<br/>
+ * Resource loader that scan configured (yaml) file and parse each configured error to an {@link org.nearmi.core.resource.DictionaryEntry}<br/>
  * this
  * @author A.Djebarri
  * @since 1.0
