@@ -6,6 +6,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.nearmi.core.resource.ResourceDictionary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -22,6 +23,7 @@ import java.util.List;
  * @since 1.0
  */
 @Slf4j
+@Component
 public class ExceptionResourceLoader {
     @Autowired
     @Qualifier("genericResource")

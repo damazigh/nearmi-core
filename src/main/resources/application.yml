@@ -1,0 +1,6 @@
+nearmi:
+  config:
+    dbName: 'nearmi-dev'
+    dbUsername: 'nearmi-dev'
+    dbPassword: 'dev@password'
+    cluster: 'cluster0.kvkgz.mongodb.net'
