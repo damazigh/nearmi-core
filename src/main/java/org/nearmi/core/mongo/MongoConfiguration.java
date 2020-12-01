@@ -4,7 +4,9 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.springframework.data.mongodb.config.AbstractReactiveMongoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 /**
  * mongo configuration class that creates that handle database connection
@@ -12,8 +14,8 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
  * @since 1.0
  */
 @Configuration
-@EnableReactiveMongoRepositories
-public class MongoConfiguration extends AbstractReactiveMongoConfiguration {
+@EnableMongoRepositories
+public class MongoConfiguration extends AbstractMongoClientConfiguration {
     @Autowired
     private MongoResource mongoResource;
 
@@ -24,12 +26,12 @@ public class MongoConfiguration extends AbstractReactiveMongoConfiguration {
 
     @Override
     protected void configureClientSettings(MongoClientSettings.Builder builder) {
-        StringBuilder sb = new StringBuilder("mongodb+srv://")
-                .append(this.mongoResource.getDbUsername()).append(":")
-                .append(this.mongoResource.getDbPassword()).append("@")
-                .append(this.mongoResource.getCluster()).append("/")
-                .append(this.mongoResource.getDbName());
-        ConnectionString cs = new ConnectionString(sb.toString());
+        String sb = "mongodb+srv://" +
+                this.mongoResource.getDbUsername() + ":" +
+                this.mongoResource.getDbPassword() + "@" +
+                this.mongoResource.getCluster() + "/" +
+                this.mongoResource.getDbName();
+        ConnectionString cs = new ConnectionString(sb);
         builder.applyConnectionString(cs);
         builder.retryWrites(true);
 

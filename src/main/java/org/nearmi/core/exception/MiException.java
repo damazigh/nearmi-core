@@ -12,6 +12,7 @@ import java.util.stream.Stream;
  * Base exception class used in nearmi app.<br/>
  * The exception handler is configured to catch
  * every exception class of type {@link MiException} (or its sub classes) and translate it to an instance of {@link MiError}
+ *
  * @author A.Djebarri
  * @since 1.0
  */
@@ -21,12 +22,13 @@ public class MiException extends RuntimeException {
     private String id;
     private String key;
     private String message;
-    private String descParams [];
+    private String[] descParams;
 
-    public MiException(String key, Exception e) {
+    MiException(String key, Exception e) {
         super(e);
         this.assignKeyAndId(key);
     }
+
     public MiException(String key) {
         this.assignKeyAndId(key);
     }
@@ -37,7 +39,7 @@ public class MiException extends RuntimeException {
             args = new String[0];
         }
         if (fieldName != null) {
-            this.descParams = Stream.concat(Arrays.stream(new String [] {fieldName}),
+            this.descParams = Stream.concat(Arrays.stream(new String[]{fieldName}),
                     Arrays.stream(args)).toArray(String[]::new);
         } else {
             this.descParams = args;
