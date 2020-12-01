@@ -24,6 +24,11 @@ public class MiException extends RuntimeException {
     private String message;
     private String[] descParams;
 
+    MiException(String key, String... args) {
+        this.assignKeyAndId(key);
+        this.descParams = args;
+    }
+
     MiException(String key, Exception e) {
         super(e);
         this.assignKeyAndId(key);
