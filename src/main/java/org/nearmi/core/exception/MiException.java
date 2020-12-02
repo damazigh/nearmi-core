@@ -4,9 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 
-import java.util.Arrays;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 /**
  * Base exception class used in nearmi app.<br/>
@@ -24,10 +22,6 @@ public class MiException extends RuntimeException {
     private String message;
     private String[] descParams;
 
-    MiException(String key, String... args) {
-        this.assignKeyAndId(key);
-        this.descParams = args;
-    }
 
     MiException(String key, Exception e) {
         super(e);
@@ -38,17 +32,9 @@ public class MiException extends RuntimeException {
         this.assignKeyAndId(key);
     }
 
-    public MiException(String key, String fieldName, String... args) {
+    public MiException(String key, String... args) {
         this.assignKeyAndId(key);
-        if (args == null) {
-            args = new String[0];
-        }
-        if (fieldName != null) {
-            this.descParams = Stream.concat(Arrays.stream(new String[]{fieldName}),
-                    Arrays.stream(args)).toArray(String[]::new);
-        } else {
-            this.descParams = args;
-        }
+        this.descParams = args;
     }
 
     private void assignKeyAndId(String key) {

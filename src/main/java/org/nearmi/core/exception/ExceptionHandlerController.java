@@ -45,7 +45,11 @@ public class ExceptionHandlerController {
         if (entry != null) {
             err.setKey(ex.getKey());
             err.setMessage(entry.getMessage());
-            err.setDescription(String.format(entry.getDescription(), ex.getDescParams()));
+            if (ex.getDescParams() != null && ex.getDescParams().length > 0) {
+                err.setDescription(String.format(entry.getDescription(), ex.getDescParams()));
+            } else {
+                err.setDescription(entry.getDescription());
+            }
             err.setStatus(entry.getStatus());
         }
         return err;
