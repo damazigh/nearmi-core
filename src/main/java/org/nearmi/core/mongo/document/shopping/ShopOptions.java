@@ -12,7 +12,7 @@ import java.util.Collection;
 public class ShopOptions {
     private boolean automaticOrderConfirmation;
     private boolean manualOrderConfirmation;
-    private boolean canScheduleAppointment;
+    private boolean schedulingAppointment;
     private boolean openWithoutClosure;
     private Collection<WeekDays> openingDays;
     private Time opensAt;

@@ -8,6 +8,7 @@ import java.util.Collection;
 @Document("miProUser")
 public class MiProUser extends MiUser {
     private Collection<Shop> shops;
+    private boolean owner;
 
     public MiProUser() {
         this.professional = true;

@@ -6,4 +6,9 @@ import lombok.Data;
 public class Time {
     int hour;
     int minute;
+
+    @Override
+    public String toString() {
+        return hour + ":" + minute;
+    }
 }
