@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Collection;
+
 @Document("shop")
 @Data
 public class Shop {
@@ -25,4 +27,6 @@ public class Shop {
     private MiUser responsible;
     @DBRef
     private ShopOptions options;
+    @DBRef
+    private Collection<Product> products;
 }
