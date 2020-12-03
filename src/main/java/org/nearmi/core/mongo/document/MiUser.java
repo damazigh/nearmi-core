@@ -13,17 +13,19 @@ import java.util.Collection;
 @Data
 public class MiUser {
     @Id
-    private ObjectId id;
-    private String username;
-    private String email;
-    private String name;
-    private String familyName;
+    protected ObjectId id;
+    protected String username;
+    protected String email;
+    protected String name;
+    protected String familyName;
     @DBRef
-    private Gender gender;
-    private LocalDateTime birthdate;
+    protected Gender gender;
+    protected LocalDateTime birthdate;
+    protected LocalDateTime created;
+    protected LocalDateTime modified;
     @DBRef
-    private Collection<Role> roles;
-    private boolean professional;
+    protected Collection<Role> roles;
+    protected boolean professional;
     @DBRef
     private Collection<Appointment> appointments;
 }
