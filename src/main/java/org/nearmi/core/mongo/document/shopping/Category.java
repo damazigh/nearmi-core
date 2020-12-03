@@ -16,4 +16,8 @@ public class Category {
     private String label;
     private LocalDateTime created;
     private LocalDateTime modified;
+
+    public Category() {
+        this.id = new ObjectId();
+    }
 }

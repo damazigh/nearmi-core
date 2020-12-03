@@ -28,4 +28,8 @@ public class MiUser {
     protected boolean professional;
     @DBRef
     private Collection<Appointment> appointments;
+
+    public MiUser() {
+        this.id = new ObjectId();
+    }
 }

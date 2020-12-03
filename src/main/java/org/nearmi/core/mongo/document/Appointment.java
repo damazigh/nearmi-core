@@ -16,4 +16,8 @@ public class Appointment {
     private String description;
     private LocalDateTime start;
     private LocalDateTime end;
+
+    public Appointment() {
+        this.id = new ObjectId();
+    }
 }

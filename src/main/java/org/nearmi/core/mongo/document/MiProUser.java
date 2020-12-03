@@ -1,5 +1,6 @@
 package org.nearmi.core.mongo.document;
 
+import org.bson.types.ObjectId;
 import org.nearmi.core.mongo.document.shopping.Shop;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,5 +13,7 @@ public class MiProUser extends MiUser {
 
     public MiProUser() {
         this.professional = true;
+        this.id = new ObjectId();
+
     }
 }

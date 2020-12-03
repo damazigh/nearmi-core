@@ -15,4 +15,8 @@ class Product {
     // TODO AJOUTER les photos avec grids fs
     private int price;
     private boolean available;
+
+    public Product() {
+        this.id = new ObjectId();
+    }
 }

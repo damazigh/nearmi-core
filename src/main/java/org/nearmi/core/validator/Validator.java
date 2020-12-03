@@ -13,7 +13,7 @@ public class Validator {
 
     public static <T> void notEmpty(T value, String field) {
         notNull(value, field);
-        if (value.getClass().isAssignableFrom(String.class)) {
+        if (value.getClass().isAssignableFrom(String.class) && value.equals("")) {
             throwEx(GeneralResKey.NMI_G_0002, field);
         }
     }

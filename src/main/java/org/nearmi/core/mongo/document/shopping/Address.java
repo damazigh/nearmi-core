@@ -17,4 +17,9 @@ public class Address {
     private String line2;
     int longitude;
     int latitude;
+
+
+    public Address() {
+        this.id = new ObjectId();
+    }
 }

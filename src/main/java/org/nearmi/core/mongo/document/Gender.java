@@ -12,4 +12,8 @@ class Gender {
     private ObjectId id;
     private String code;
     private String label;
+
+    public Gender() {
+        this.id = new ObjectId();
+    }
 }

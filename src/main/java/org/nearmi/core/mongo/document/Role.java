@@ -11,4 +11,8 @@ class Role {
     @Id
     private ObjectId id;
     private String role;
+
+    public Role() {
+        this.id = new ObjectId();
+    }
 }

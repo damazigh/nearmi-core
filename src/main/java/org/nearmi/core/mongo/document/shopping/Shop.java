@@ -29,4 +29,8 @@ public class Shop {
     private ShopOptions options;
     @DBRef
     private Collection<Product> products;
+
+    public Shop() {
+        this.id = new ObjectId();
+    }
 }
