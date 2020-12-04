@@ -20,6 +20,12 @@ public class CoreSecurity {
         return (String) claims.get(attr);
     }
 
+    public static boolean isAuthenticated() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth != null
+                && auth.isAuthenticated();
+    }
+
     private static void initClaims() {
         SecurityContext ctx = SecurityContextHolder.getContext();
         if (ctx.getAuthentication() != null) {

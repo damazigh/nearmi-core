@@ -1,16 +1,20 @@
 entries:
   - key: 'NMI_G_0000'
     message: 'Internal server error'
-    description: 'For more information checkout log file - id : %1s'
+    description: 'For more information checkout log file - id : %s'
     status: 500
   - key: 'NMI_G_0001'
     message: 'Invalid value detected'
-    description: 'The field %s$1 must be not null'
+    description: 'The field %s must be not null'
     status: 400
   - key: 'NMI_G_0002'
     message: 'Invalid value detected'
-    description: 'The field %1s value was empty'
-  - key: 'G_0003'
-    message: 'Value already exists'
-    description: "Value of field %1s already exists"
+    description: 'The field %s value was empty'
+  - key: 'NMI_G_0003'
+    message: 'Unicity constraint violation'
+    description: "Value of field %s already exists"
+    status: 400
+  - key: 'NMI_G_0004'
+    message: 'Invalid pagination parameter'
+    description: 'Parameter %s should be valid zero or positive integer'
     status: 400
