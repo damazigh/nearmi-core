@@ -13,13 +13,20 @@ public class HttpUtils {
      * @param <T>      type of the result search
      */
     public static <T> void addPaginationHeader(HttpServletResponse response, PaginatedSearchResult<T> result) {
-        int resultCount = 0;
-        int totalCount = 0;
+        long resultCount = 0;
+        long totalCount = 0;
         if (result != null && result.getContent() != null && !result.getContent().isEmpty()) {
             resultCount = result.getContent().size();
             totalCount = result.getTotalCount();
         }
         response.addHeader("X-RESULT-COUNT", String.valueOf(resultCount));
         response.addHeader("X-TOTAL-COUNT", String.valueOf(totalCount));
+    }
+
+    public static int parsePaginationParam(String pParam, int min) {
+        if (pParam == null) {
+            return min;
+        }
+        return Integer.parseInt(pParam);
     }
 }

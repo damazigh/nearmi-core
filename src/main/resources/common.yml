@@ -16,5 +16,9 @@ entries:
     status: 400
   - key: 'NMI_G_0004'
     message: 'Invalid pagination parameter'
-    description: 'Parameter %s should be valid zero or positive integer'
+    description: 'Parameter %s should be valid integer'
+    status: 400
+  - key: 'NMI_G_0005'
+    message: 'Invalid pagination parameter'
+    description: 'Parameter %s should be at least equal to %s'
     status: 400
