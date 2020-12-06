@@ -9,6 +9,6 @@ public class AddressDto {
     private String city;
     private String line1;
     private String line2;
-    private int longitude;
-    private int latitude;
+    private float longitude;
+    private float latitude;
 }

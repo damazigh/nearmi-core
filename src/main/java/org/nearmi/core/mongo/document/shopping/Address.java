@@ -1,25 +1,28 @@
 package org.nearmi.core.mongo.document.shopping;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.UUID;
 
 @Document("address")
 @Data
 public class Address {
     @Id
-    private ObjectId id;
+    private String id;
     private String city;
     private String postalCode;
     private String country;
     private String line1;
     private String line2;
-    int longitude;
-    int latitude;
+    @GeoSpatialIndexed
+    private Point location;
 
 
     public Address() {
-        this.id = new ObjectId();
+        this.id = UUID.randomUUID().toString();
     }
 }

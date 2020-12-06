@@ -1,19 +1,19 @@
 package org.nearmi.core.mongo.document;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.UUID;
 
 @Document("user")
 @Data
 public class MiUser {
     @Id
-    protected ObjectId id;
+    protected String id;
     protected String username;
     protected String email;
     protected String name;
@@ -30,6 +30,6 @@ public class MiUser {
     private Collection<Appointment> appointments;
 
     public MiUser() {
-        this.id = new ObjectId();
+        this.id = UUID.randomUUID().toString();
     }
 }

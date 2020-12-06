@@ -1,19 +1,19 @@
 package org.nearmi.core.mongo.document.shopping;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.nearmi.core.mongo.document.enumeration.WeekDays;
 import org.nearmi.core.mongo.document.technical.Time;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @Document("shopOptions")
 @Data
 public class ShopOptions {
     @Id
-    private ObjectId id;
+    private String id;
     private boolean automaticOrderConfirmation;
     private boolean manualOrderConfirmation;
     private boolean schedulingAppointment;
@@ -26,6 +26,6 @@ public class ShopOptions {
     private Time breakClosureEnd;
 
     public ShopOptions() {
-        this.id = new ObjectId();
+        this.id = UUID.randomUUID().toString();
     }
 }
