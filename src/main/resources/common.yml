@@ -22,3 +22,16 @@ entries:
     message: 'Invalid pagination parameter'
     description: 'Parameter %s should be at least equal to %s'
     status: 400
+  - key: 'NMI_G_0006'
+    message: 'Invalid file upload'
+    description: 'Trying to upload empty file'
+    status: 400
+  - key: 'NMI_G_0007'
+    message: 'Invalid file upload'
+    description: 'Unexpected mime type %1s'
+    status: 400
+  - key: 'NMI_G_0008'
+    message: 'Error at upload'
+    description: 'Error occured when saving file %1s to %2s'
+    status: 400
+

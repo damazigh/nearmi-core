@@ -24,7 +24,7 @@ public class AddressRepositoryImpl implements AddressCustomRepository {
         double maxDistance = env.getRequiredProperty("nearmi.config.max-distance", Double.class);
         Query q = new Query();
         Point point = new Point(longitude, latitude);
-        Criteria criteria = Criteria.where("address.location").near(point).maxDistance(maxDistance);
+        Criteria criteria = Criteria.where("location").near(point).maxDistance(maxDistance);
         q.addCriteria(criteria);
         return mongoTemplate.find(q, Address.class);
     }

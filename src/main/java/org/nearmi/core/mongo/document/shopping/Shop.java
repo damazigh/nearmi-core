@@ -1,7 +1,10 @@
 package org.nearmi.core.mongo.document.shopping;
 
+import lombok.AccessLevel;
 import lombok.Data;
-import org.nearmi.core.mongo.document.MiUser;
+import lombok.Setter;
+import org.nearmi.core.mongo.cascade.Cascade;
+import org.nearmi.core.mongo.document.MiProUser;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,19 +21,31 @@ public class Shop {
     private String registrationNumber;
     private String description;
     private String shortDesc;
+    private String imageMetadata;
     private boolean validated;
     @DBRef
+    @Cascade
     private Category category;
     @DBRef
+    @Cascade
     private Address address;
+
+    @Setter(AccessLevel.NONE)
+    @Cascade
     @DBRef
-    private MiUser responsible;
+    private MiProUser responsible;
     @DBRef
+    @Cascade
     private ShopOptions options;
     @DBRef
     private Collection<Product> products;
 
     public Shop() {
         this.id = UUID.randomUUID().toString();
+    }
+
+    public void setResponsible(MiProUser responsible) {
+        this.responsible = responsible;
+        this.responsible.getShops().add(this);
     }
 }

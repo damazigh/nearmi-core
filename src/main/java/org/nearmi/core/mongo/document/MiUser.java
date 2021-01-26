@@ -27,7 +27,7 @@ public class MiUser {
     protected Collection<Role> roles;
     protected boolean professional;
     @DBRef
-    private Collection<Appointment> appointments;
+    protected Collection<Appointment> appointments;
 
     public MiUser() {
         this.id = UUID.randomUUID().toString();

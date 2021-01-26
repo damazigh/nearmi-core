@@ -12,12 +12,16 @@ import java.util.Map;
 
 public class CoreSecurity {
     private static Map<String, Object> claims;
+    private static AccessToken token;
 
     public static String getAttribute(String attr) {
-        if (claims == null) {
-            initClaims();
-        }
+        initClaims();
         return (String) claims.get(attr);
+    }
+
+    public static AccessToken token() {
+        initClaims();
+        return token;
     }
 
     public static boolean isAuthenticated() {
@@ -35,7 +39,7 @@ public class CoreSecurity {
 
                 if (keycloakToken.getPrincipal() instanceof KeycloakPrincipal) {
                     KeycloakPrincipal<KeycloakSecurityContext> kp = (KeycloakPrincipal<KeycloakSecurityContext>) keycloakToken.getPrincipal();
-                    AccessToken token = kp.getKeycloakSecurityContext().getToken();
+                    token = kp.getKeycloakSecurityContext().getToken();
                     claims = token.getOtherClaims();
                 } else {
                     throw new IllegalArgumentException("not a keycloak principal !");

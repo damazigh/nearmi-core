@@ -23,6 +23,7 @@
         <commons-io.version>2.6</commons-io.version>
         <junit-engine.version>5.4.0</junit-engine.version>
         <junit5.version>5.7.0</junit5.version>
+        <apache-tika.version>2.0.0-ALPHA</apache-tika.version>
     </properties>
 
 
@@ -88,6 +89,11 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>${apache-tika.version}</version>
         </dependency>
 
     </dependencies>
