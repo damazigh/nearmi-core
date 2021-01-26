@@ -23,7 +23,7 @@ public class MiException extends RuntimeException {
     private String[] descParams;
 
 
-    MiException(String key, Exception e) {
+    public MiException(String key, Exception e) {
         super(e);
         this.assignKeyAndId(key);
     }

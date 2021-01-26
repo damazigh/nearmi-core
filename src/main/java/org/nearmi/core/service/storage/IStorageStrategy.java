@@ -13,4 +13,5 @@ public interface IStorageStrategy {
      * @return path to stored file
      */
     String save(MultipartFile file, String baseDir, String userId, String resourceId);
+    
 }
