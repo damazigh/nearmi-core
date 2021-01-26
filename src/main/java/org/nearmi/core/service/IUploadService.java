@@ -11,4 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface IUploadService {
     String upload(MultipartFile file, String userId, String resourceId, String... acceptedMime);
+
+    byte[] load(String path);
+
+    void deleteIfExist(String path);
 }
