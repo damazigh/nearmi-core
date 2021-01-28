@@ -7,6 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeospatialIndex;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -21,7 +22,7 @@ public class AddressRepositoryImpl implements AddressCustomRepository {
 
     @Override
     public Collection<Address> findByLocation(float longitude, float latitude) {
-        mongoTemplate.indexOps(Address.class).ensureIndex(new GeospatialIndex("location"));
+        mongoTemplate.indexOps(Address.class).ensureIndex(new GeospatialIndex("location").typed(GeoSpatialIndexType.GEO_2DSPHERE));
         double maxDistance = env.getRequiredProperty("nearmi.config.max-distance", Double.class);
         Query q = new Query();
         Point point = new GeoJsonPoint(longitude, latitude);
