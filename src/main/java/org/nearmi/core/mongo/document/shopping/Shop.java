@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -23,6 +24,7 @@ public class Shop {
     private String shortDesc;
     private String imageMetadata;
     private boolean validated;
+    private LocalDate created;
     @DBRef
     @Cascade
     private Category category;

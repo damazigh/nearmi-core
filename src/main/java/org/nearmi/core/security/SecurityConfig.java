@@ -31,7 +31,7 @@ public abstract class SecurityConfig extends KeycloakWebSecurityConfigurerAdapte
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
-        http.csrf().disable().sessionManagement()
+        http.cors().and().csrf().disable().sessionManagement()
                 .sessionCreationPolicy((SessionCreationPolicy.STATELESS));
     }
 
