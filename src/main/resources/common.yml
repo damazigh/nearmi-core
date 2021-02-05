@@ -10,6 +10,7 @@ entries:
   - key: 'NMI_G_0002'
     message: 'Invalid value detected'
     description: 'The field %s value was empty'
+    status: 400
   - key: 'NMI_G_0003'
     message: 'Unicity constraint violation'
     description: "Value of field %s already exists"
@@ -32,6 +33,9 @@ entries:
     status: 400
   - key: 'NMI_G_0008'
     message: 'Error at upload'
-    description: 'Error occured when saving file %1s to %2s'
+    description: 'Error occurred when saving file %1s to %2s'
     status: 400
-
+  - key: 'NMI_G_0009'
+    message: 'Invalid value detected'
+    description: 'Value %1s must be a positive number'
+    status: 400

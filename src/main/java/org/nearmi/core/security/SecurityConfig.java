@@ -2,6 +2,7 @@ package org.nearmi.core.security;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
@@ -19,8 +21,12 @@ public abstract class SecurityConfig extends KeycloakWebSecurityConfigurerAdapte
     private boolean debugSecurity;
 
     @Autowired
-    protected void configureGloabl(AuthenticationManagerBuilder authBuilder) {
-        authBuilder.authenticationProvider(keycloakAuthenticationProvider());
+    protected void configureGlobal(AuthenticationManagerBuilder authBuilder) {
+        KeycloakAuthenticationProvider kap = new CustomKeycloakAuthenticationProvider();
+        SimpleAuthorityMapper sap = new SimpleAuthorityMapper();
+        sap.setPrefix("ROLE_");
+        kap.setGrantedAuthoritiesMapper(sap);
+        authBuilder.authenticationProvider(kap);
     }
 
     @Override

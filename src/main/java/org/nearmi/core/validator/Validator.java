@@ -22,7 +22,14 @@ public class Validator {
             throwEx(GeneralResKey.NMI_G_0002, field);
         }
         if (value.getClass().isAssignableFrom(MultipartFile.class) && ((MultipartFile) value).isEmpty()) {
-            throwEx(GeneralResKey.NMI_G_0006);
+            throwEx(GeneralResKey.NMI_G_0006, field);
+        }
+    }
+
+    public static <T> void positiveNumber(T value, String field) {
+        notNull(value, field);
+        if (value.getClass().isAssignableFrom(Integer.class) && (Integer) value <= 0) {
+            throwEx(GeneralResKey.NMI_G_0009, field);
         }
     }
 

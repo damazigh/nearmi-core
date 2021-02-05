@@ -10,7 +10,9 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
 @Document("shop")
@@ -25,13 +27,13 @@ public class Shop {
     private String imageMetadata;
     private boolean validated;
     private LocalDate created;
+
     @DBRef
     @Cascade
     private Category category;
     @DBRef
     @Cascade
     private Address address;
-
     @Setter(AccessLevel.NONE)
     @Cascade
     @DBRef
@@ -39,8 +41,13 @@ public class Shop {
     @DBRef
     @Cascade
     private ShopOptions options;
+    // no cascading on lists as it would result
+    // on unnecessary operations for not updated rows
     @DBRef
     private Collection<Product> products;
+    @DBRef
+    private List<ProductCategory> productCategories;
+
 
     public Shop() {
         this.id = UUID.randomUUID().toString();
@@ -49,5 +56,13 @@ public class Shop {
     public void setResponsible(MiProUser responsible) {
         this.responsible = responsible;
         this.responsible.getShops().add(this);
+    }
+
+    public void addProductCategory(ProductCategory category) {
+        if (productCategories == null) {
+            productCategories = new ArrayList<>();
+        }
+        category.setShop(this);
+        productCategories.add(category);
     }
 }
