@@ -24,6 +24,7 @@
         <junit-engine.version>5.4.0</junit-engine.version>
         <junit5.version>5.7.0</junit5.version>
         <apache-tika.version>2.0.0-ALPHA</apache-tika.version>
+        <springdoc-openapi-ui.version>1.5.2</springdoc-openapi-ui.version>
     </properties>
 
 
@@ -94,6 +95,11 @@
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-core</artifactId>
             <version>${apache-tika.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc-openapi-ui.version}</version>
         </dependency>
 
     </dependencies>
