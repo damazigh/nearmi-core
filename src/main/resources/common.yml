@@ -39,3 +39,7 @@ entries:
     message: 'Invalid value detected'
     description: 'Value %1s must be a positive number'
     status: 400
+  - key: 'NMI_G_0010'
+    message: 'Resource not found'
+    description: "Request resource doesn't exist in server"
+    status: 404

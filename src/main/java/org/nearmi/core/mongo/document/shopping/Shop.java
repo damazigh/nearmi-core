@@ -2,6 +2,7 @@ package org.nearmi.core.mongo.document.shopping;
 
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
 import lombok.Setter;
 import org.nearmi.core.mongo.cascade.Cascade;
 import org.nearmi.core.mongo.document.MiProUser;
@@ -27,6 +28,8 @@ public class Shop {
     private String imageMetadata;
     private boolean validated;
     private LocalDate created;
+    @Getter(AccessLevel.NONE)
+    private List<String> metadata;
 
     @DBRef
     @Cascade
@@ -64,5 +67,12 @@ public class Shop {
         }
         category.setShop(this);
         productCategories.add(category);
+    }
+
+    public List<String> getMetadata() {
+        if (this.metadata == null) {
+            metadata = new ArrayList<>();
+        }
+        return metadata;
     }
 }

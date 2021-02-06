@@ -10,4 +10,5 @@ public interface GeneralResKey {
     String NMI_G_0007 = "NMI_G_0007";
     String NMI_G_0008 = "NMI_G_0008";
     String NMI_G_0009 = "NMI_G_0009";
+    String NMI_G_0010 = "NMI_G_0010";
 }
