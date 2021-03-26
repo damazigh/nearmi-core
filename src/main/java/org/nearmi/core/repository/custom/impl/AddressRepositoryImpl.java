@@ -30,4 +30,9 @@ public class AddressRepositoryImpl implements AddressCustomRepository {
         q.addCriteria(criteria);
         return mongoTemplate.find(q, Address.class);
     }
+
+    @Override
+    public void ensureGeo2dIndex() {
+        mongoTemplate.indexOps(Address.class).ensureIndex(new GeospatialIndex("location").typed(GeoSpatialIndexType.GEO_2DSPHERE));
+    }
 }

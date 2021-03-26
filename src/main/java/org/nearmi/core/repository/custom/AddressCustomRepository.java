@@ -15,4 +15,5 @@ public interface AddressCustomRepository {
      */
     Collection<Address> findByLocation(float longitude, float latitude);
 
+    void ensureGeo2dIndex();
 }

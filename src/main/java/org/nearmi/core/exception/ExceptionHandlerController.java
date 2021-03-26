@@ -66,7 +66,7 @@ public class ExceptionHandlerController {
     public MiError translateOthers(Exception ex, HttpServletResponse response) {
         // wrap error into MiException
         MiException miException = new MiException(INTERNAL_SERVER_ERROR_CODE, ex);
-        log.error("unexpected error occurred- id : {}", miException.getId(), miException);
+        log.error("unexpected error occurred- id : {}", miException.getId(), ex);
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return this.translateMiException(miException);
     }

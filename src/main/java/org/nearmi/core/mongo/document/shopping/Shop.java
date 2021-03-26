@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.nearmi.core.mongo.cascade.Cascade;
 import org.nearmi.core.mongo.document.MiProUser;
+import org.nearmi.core.mongo.document.technical.ImageMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -25,11 +26,10 @@ public class Shop {
     private String registrationNumber;
     private String description;
     private String shortDesc;
-    private String imageMetadata;
     private boolean validated;
     private LocalDate created;
     @Getter(AccessLevel.NONE)
-    private List<String> metadata;
+    private List<ImageMetadata> imagesMetadata;
 
     @DBRef
     @Cascade
@@ -69,10 +69,10 @@ public class Shop {
         productCategories.add(category);
     }
 
-    public List<String> getMetadata() {
-        if (this.metadata == null) {
-            metadata = new ArrayList<>();
+    public List<ImageMetadata> getMetadata() {
+        if (this.imagesMetadata == null) {
+            imagesMetadata = new ArrayList<>();
         }
-        return metadata;
+        return imagesMetadata;
     }
 }

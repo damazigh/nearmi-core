@@ -44,8 +44,8 @@ public class UploadService implements IUploadService {
     public byte[] load(String path) {
         File file = new File(path);
         if (file.exists()) {
-            try {
-                return IOUtils.toByteArray(new FileInputStream(file));
+            try (FileInputStream fip = new FileInputStream(file)) {
+                return IOUtils.toByteArray(fip);
             } catch (IOException e) {
                 throw new MiException(GeneralResKey.NMI_G_0001);
             }
