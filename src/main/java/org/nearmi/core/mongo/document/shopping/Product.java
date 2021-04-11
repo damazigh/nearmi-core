@@ -4,7 +4,9 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.nearmi.core.mongo.document.technical.ImageMetadata;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -22,13 +24,16 @@ public class Product {
     @Setter(AccessLevel.NONE)
     private boolean available;
     private int amount;
-    private List<String> metadata;
+    private List<ImageMetadata> metadata;
+    @DBRef
+    private Shop productOwner;
 
     public boolean isAvailable() {
         return amount > 0;
     }
 
-    public Product() {
+    public Product(Shop owner) {
         this.id = UUID.randomUUID().toString();
+        this.productOwner = owner;
     }
 }

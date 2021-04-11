@@ -6,6 +6,7 @@ import org.nearmi.core.exception.MiException;
 import org.nearmi.core.resource.GeneralResKey;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -51,6 +52,15 @@ public class Validator {
             }
         } catch (IOException e) {
             throw new MiException(GeneralResKey.NMI_G_0001);
+        }
+    }
+
+    public static void equal(@NotNull Object obj1, @NotNull Object obj2, String key, String... args) {
+        if (obj1 == null || obj2 == null) {
+            throw new IllegalArgumentException("equal validator received null value for either one or both argument");
+        }
+        if (!obj1.equals(obj2)) {
+            throwEx(key, args);
         }
     }
 

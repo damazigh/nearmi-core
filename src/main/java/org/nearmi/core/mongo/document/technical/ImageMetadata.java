@@ -15,13 +15,17 @@ public class ImageMetadata {
     private LocalDateTime uploadedAt;
     private LocalDateTime lastUpdatedAt;
     private String lastUpdatedBy;
+    private float height;
+    private float width;
 
-    public ImageMetadata(String userId, boolean root, String path) {
+    public ImageMetadata(String userId, boolean root, String path, float w, float h) {
         this.lastUpdatedBy = userId;
         this.path = path;
         this.rootImage = root;
         this.name = FilenameUtils.getName(path);
         this.lastUpdatedAt = LocalDateTime.now();
+        this.height = h;
+        this.width = w;
         this.uploadedAt = LocalDateTime.now();
     }
 
