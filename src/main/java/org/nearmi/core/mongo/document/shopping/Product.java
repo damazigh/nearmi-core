@@ -3,7 +3,9 @@ package org.nearmi.core.mongo.document.shopping;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.nearmi.core.mongo.cascade.Cascade;
 import org.nearmi.core.mongo.document.technical.ImageMetadata;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -14,6 +16,7 @@ import java.util.UUID;
 
 @Document("product")
 @Data
+@NoArgsConstructor
 public class Product {
     @Id
     private String id;
@@ -27,6 +30,9 @@ public class Product {
     private List<ImageMetadata> metadata;
     @DBRef
     private Shop productOwner;
+    @DBRef
+    @Cascade
+    private ProductCategory productCategory;
 
     public boolean isAvailable() {
         return amount > 0;
@@ -36,4 +42,5 @@ public class Product {
         this.id = UUID.randomUUID().toString();
         this.productOwner = owner;
     }
+
 }

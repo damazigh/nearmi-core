@@ -10,8 +10,9 @@ public interface IStorageStrategy {
      * @param baseDir    parent directory
      * @param userId     authenticated user id
      * @param resourceId resource id (example shop id)
+     * @param subDirs    a list of sub dirs to create
      * @return path to stored file
      */
-    String save(MultipartFile file, String baseDir, String userId, String resourceId);
-    
+    String save(MultipartFile file, String baseDir, String userId, String resourceId, String... subDirs);
+
 }

@@ -83,5 +83,14 @@ public class ExceptionHandlerController {
         return miError;
     }
 
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public MiError handleNotFound(ResourceNotFoundException ex, HttpServletResponse res) {
+        MiError miError = new MiError();
+        miError.setKey("NMI_G_NF");
+        miError.setMessage("Resource not found");
+        res.setStatus(HttpStatus.NOT_FOUND.value());
+        return miError;
+    }
+
 
 }

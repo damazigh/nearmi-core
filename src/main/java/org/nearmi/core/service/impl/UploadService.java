@@ -28,16 +28,14 @@ public class UploadService implements IUploadService {
 
     @Override
     public String upload(MultipartFile file, String userId, String resourceId, String... acceptedMime) {
-        File parentDir = new File(dataDir);
-        if (!parentDir.exists()) {
-            throw new FileUploadException(String.format("parent dir %1s doesn't exist", parentDir));
-        }
-
-        if (!parentDir.isDirectory()) {
-            throw new FileUploadException(String.format("%1s is not a directory", parentDir));
-        }
-        Validator.validateFileMime(file, acceptedMime);
+        validateInternal(file, acceptedMime);
         return storageStrategy.save(file, dataDir, userId, resourceId);
+    }
+
+    @Override
+    public String uploadInSubFolder(MultipartFile file, String userId, String resourceId, String[] subDirs, String... acceptedMime) {
+        validateInternal(file, acceptedMime);
+        return storageStrategy.save(file, dataDir, userId, resourceId, subDirs);
     }
 
     @Override
@@ -72,4 +70,17 @@ public class UploadService implements IUploadService {
             }
         }
     }
+
+    private void validateInternal(MultipartFile file, String... acceptedMime) {
+        File parentDir = new File(dataDir);
+        if (!parentDir.exists()) {
+            throw new FileUploadException(String.format("parent dir %1s doesn't exist", parentDir));
+        }
+
+        if (!parentDir.isDirectory()) {
+            throw new FileUploadException(String.format("%1s is not a directory", parentDir));
+        }
+        Validator.validateFileMime(file, acceptedMime);
+    }
+
 }

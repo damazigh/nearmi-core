@@ -24,8 +24,11 @@ import java.nio.file.Paths;
 public class DefaultStorageStrategy implements IStorageStrategy {
 
     @Override
-    public String save(MultipartFile file, String baseDir, String userId, String resourceId) {
+    public String save(MultipartFile file, String baseDir, String userId, String resourceId, String... subDirs) {
         String parentDir = baseDir + File.separator + userId + File.separator + resourceId + File.separator;
+        if (subDirs != null && subDirs.length > 0) {
+            parentDir = parentDir + String.join(File.separator, subDirs);
+        }
         String extension = FilenameUtils.getExtension(file.getOriginalFilename());
         String generated = RandomStringUtils.randomAlphabetic(8);
         String generatedFileName;

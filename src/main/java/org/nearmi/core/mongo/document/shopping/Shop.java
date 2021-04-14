@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,8 +45,6 @@ public class Shop {
     private ShopOptions options;
     // no cascading on lists as it would result
     // on unnecessary operations for not updated rows
-    @DBRef
-    private Collection<Product> products;
     @DBRef
     private List<ProductCategory> productCategories;
 
